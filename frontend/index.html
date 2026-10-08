@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f6f5" />
+    <meta name="description" content="A simple campus event list." />
+    <title>CampusConnect Events</title>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">CampusConnect</a>
+      <span id="connection-status" class="connection-status" role="status">Loading events...</span>
+    </header>
+
+    <main class="page">
+      <section class="intro">
+        <p class="eyebrow">CAMPUS EVENTS</p>
+        <h1>Make something happen.</h1>
+        <p>Add an event and share the details with your campus.</p>
+      </section>
+
+      <div class="workspace">
+        <section class="form-section" aria-labelledby="form-title">
+          <h2 id="form-title">Add an event</h2>
+          <form id="event-form">
+            <label for="title">Event name</label>
+            <input id="title" name="title" maxlength="120" required placeholder="e.g. Film night" />
+
+            <div class="field-row">
+              <div>
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                  <option value="">Choose a category</option>
+                  <option>Workshop</option>
+                  <option>Seminar</option>
+                  <option>Social</option>
+                  <option>Sports</option>
+                </select>
+              </div>
+              <div>
+                <label for="venue">Location</label>
+                <input id="venue" name="venue" maxlength="120" required placeholder="e.g. Student Hall" />
+              </div>
+            </div>
+
+            <label for="start-time">Date and time</label>
+            <input id="start-time" name="startTime" type="datetime-local" required />
+            <p id="form-error" class="form-error" role="alert"></p>
+            <button id="submit-button" type="submit">Add event</button>
+          </form>
+        </section>
+
+        <section class="events-section" aria-labelledby="events-title">
+          <div class="events-heading">
+            <h2 id="events-title">Upcoming events</h2>
+            <span id="event-count" class="event-count">0</span>
+          </div>
+          <p id="message" class="message" aria-live="polite"></p>
+          <div id="event-list" class="event-list" aria-live="polite"></div>
+        </section>
+      </div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

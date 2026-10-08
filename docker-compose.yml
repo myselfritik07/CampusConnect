@@ -1,0 +1,22 @@
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: campusconnect-mysql
+    environment:
+      MYSQL_DATABASE: campus_connect
+      MYSQL_USER: campus_user
+      MYSQL_PASSWORD: campus_pass
+      MYSQL_ROOT_PASSWORD: local_root_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - campusconnect-data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-plocal_root_pass"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  campusconnect-data:
